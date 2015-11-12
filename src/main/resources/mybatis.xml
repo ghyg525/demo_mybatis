@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>     
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"     
+		 "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration><!-- mybatis配置文件 - 注意标签顺序 -->
+
+					
+	<!-- 引用外部属性文件 -->
+	<properties resource="db.properties" />
+
+	<!-- 配置参数属性 -->
+	<settings> 
+		<!-- 是否启用映射器缓存  默认true -->
+		<setting name="cacheEnabled" value="true"/> 
+		<!-- 是否允许一条语句返回多个结果集  默认true -->
+		<setting name="multipleResultSetsEnabled" value="true"/> 
+		<!-- 是否用列标签代替列名  默认true -->
+		<setting name="useColumnLabel" value="true"/> 
+		<!-- 是否允许JDBC支持生成的键  默认false -->
+		<setting name="useGeneratedKeys" value="false"/>
+		<!-- 设置默认执行器(SIMPLE,REUSE,BATCH)  默认SIMPLE -->
+		<setting name="defaultExecutorType" value="SIMPLE"/> 
+		<!-- 设置超时时间 它决定驱动等待数据库响应的时间  默认null -->
+		<setting name="defaultStatementTimeout" value="25000"/> 
+	</settings> 
+	
+	<!-- 配置环境 -->
+	<environments default="development">
+		<!-- 配置变量 -->
+		<environment id="development">
+			<!-- 事务管理器 -->
+			<transactionManager type="jdbc" />
+			<!-- 数据源 -->
+			<dataSource type="pooled">
+				<property name="driver" value="${driver}"/>
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+
+	<!-- 配置映射 -->
+	<mappers>
+		<mapper class="dao.UserDao" />
+	</mappers>
+	
+</configuration>   
+
+
+
+
+
+
+
